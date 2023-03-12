@@ -40,6 +40,11 @@ namespace c_term
                         }
                         Console.WriteLine("Pong! Excessive arguments: " + ea);
                     }
+                } else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Failed to recognize command.");
+                    Console.ResetColor();
                 }
 
             }
