@@ -15,8 +15,34 @@ namespace c_term
             string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             usesUpdate();
             Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
-            Console.WriteLine("----------------------------------------------------------------");
-            Console.WriteLine("b1-v0.0.1 | Type help for commands");
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("b1-v0.1.1 | Type help for commands\n");
+
+            while(true)
+            {
+                Console.Write("main-> ");
+                string MAIN_ENTRY = Console.ReadLine();
+
+                string command = MAIN_ENTRY.Split(' ')[0];
+                var arguments = new ArrayList(MAIN_ENTRY.Split(' ').Skip(1).ToArray().ToList());
+
+                if(command == "ping")
+                {
+                    if(arguments.Count == 0)
+                    {
+                        Console.WriteLine("Pong!");
+                    } else
+                    {
+                        string ea = "";
+                        for(int i = 0; i < arguments.Count; i++)
+                        {
+                            ea += arguments[i] + (i != arguments.Count - 1 ? ", " : " ");
+                        }
+                        Console.WriteLine("Pong! Excessive arguments: " + ea);
+                    }
+                }
+
+            }
         }
 
 
