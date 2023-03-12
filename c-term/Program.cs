@@ -16,7 +16,7 @@ namespace c_term
             usesUpdate();
             Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("b3-v0.1.1 | Type help for commands\n");
+            Console.WriteLine("b4-v0.1.2 | Type help for commands\n");
 
             while(true)
             {
@@ -33,12 +33,7 @@ namespace c_term
                         Console.WriteLine("Pong!");
                     } else
                     {
-                        string ea = "";
-                        for(int i = 0; i < arguments.Count; i++)
-                        {
-                            ea += arguments[i] + (i != arguments.Count - 1 ? ", " : " ");
-                        }
-                        Console.WriteLine("Pong! Excessive arguments: " + ea);
+                        Console.WriteLine("Pong! Excessive arguments: " + join(arguments, ","));
                     }
                 } else
                 {
@@ -50,6 +45,15 @@ namespace c_term
             }
         }
 
+        static string join(ArrayList al, string delimiter)
+        {
+            string str = "";
+            for(int i = 0; i < al.Count; i++)
+            {
+                str += al[i] + (i != al.Count - 1 ? $"{delimiter} " : " ");
+            }
+            return str;
+        }
 
         static string usesUpdate()
         {
