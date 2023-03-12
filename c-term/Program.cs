@@ -14,7 +14,7 @@ namespace c_term
         {
             string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             usesUpdate();
-            Console.WriteLine($"Hello, {userName}! This is your ${getUses()} time using c-term.");
+            Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
             Console.WriteLine("----------------------------------------------------------------");
             Console.WriteLine("b1-v0.0.1 | Type help for commands");
         }
@@ -29,7 +29,7 @@ namespace c_term
                 return File.ReadAllText(ctfile);
             } else
             {
-                File.Create(ctfile);
+                File.Create(ctfile).Close();
                 File.WriteAllText(ctfile, "1");
                 return "1";
             }
@@ -39,7 +39,7 @@ namespace c_term
         {
             string ctfile = Path.GetTempPath() + "cterm.ct";
             string text = File.ReadAllText(ctfile);
-            return text == "1" ? "1st" : text == "2" ? "2nd" : text == "3" ? "3rd" : text + "st"; 
+            return text == "1" ? "1st" : text == "2" ? "2nd" : text == "3" ? "3rd" : text + "th"; 
         }
     }
 }

@@ -1,0 +1,8 @@
+C:\Users\Ceyhun\Documents\GitHub\c-term\c-term\bin\Debug\c-term.exe.config
+C:\Users\Ceyhun\Documents\GitHub\c-term\c-term\bin\Debug\c-term.exe
+C:\Users\Ceyhun\Documents\GitHub\c-term\c-term\bin\Debug\c-term.pdb
+C:\Users\Ceyhun\Documents\GitHub\c-term\c-term\obj\Debug\c-term.csproj.AssemblyReference.cache
+C:\Users\Ceyhun\Documents\GitHub\c-term\c-term\obj\Debug\c-term.csproj.SuggestedBindingRedirects.cache
+C:\Users\Ceyhun\Documents\GitHub\c-term\c-term\obj\Debug\c-term.csproj.CoreCompileInputs.cache
+C:\Users\Ceyhun\Documents\GitHub\c-term\c-term\obj\Debug\c-term.exe
+C:\Users\Ceyhun\Documents\GitHub\c-term\c-term\obj\Debug\c-term.pdb
