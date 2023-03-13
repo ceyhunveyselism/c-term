@@ -15,10 +15,16 @@ namespace c_term
             bool space = delimiter == " ";
             for (int i = 0; i < al.Count; i++)
             {
-                if (!space)
-                    str += al[i] + (i != al.Count - 1 ? $"{delimiter} " : " ");
-                else
-                    str += al[i] + (i != al.Count - 1 ? " " : "");
+                if (delimiter != "")
+                {
+                    if (!space)
+                        str += al[i] + (i != al.Count - 1 ? $"{delimiter} " : " ");
+                    else
+                        str += al[i] + (i != al.Count - 1 ? " " : "");
+                } else if(delimiter == "")
+                {
+                    str += al[i];
+                }
             }
             return str;
         }

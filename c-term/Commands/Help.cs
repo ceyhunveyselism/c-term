@@ -23,7 +23,7 @@ namespace c_term.Commands
             for(int i = 0; i < handler.CommandList.Count; i++)
             {
                 Command currentCommand = handler.CommandList[i];
-                helpString += "Aliases: [" + String.Join(", ", currentCommand.aliases) + "] | Description: " + currentCommand.description + " | Usage: " + currentCommand.usage + "\n";
+                helpString += "[" + (i+1) + "] " + "Aliases: [" + String.Join(", ", currentCommand.aliases) + "] | Description: " + currentCommand.description + " | Usage: " + currentCommand.usage + "\n";
             }
 
             helpString += "--- CH COMMANDS ---\n";
@@ -31,7 +31,7 @@ namespace c_term.Commands
             for (int i = 0; i < handler.CHCommandList.Count; i++)
             {
                 CHCommand currentCommand = handler.CHCommandList[i];
-                helpString += "Aliases: [" + String.Join(", ", currentCommand.aliases) + "] | Description: " + currentCommand.description + " | Usage: " + currentCommand.usage + "\n";
+                helpString += "[" + (i+1) + "] " + String.Join(", ", currentCommand.aliases) + "] | Description: " + currentCommand.description + " | Usage: " + currentCommand.usage + "\n";
             }
 
             return new CommandReply(false, helpString);

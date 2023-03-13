@@ -26,6 +26,7 @@ namespace c_term
             commandList.Add(new SlowPrint());
             commandList.Add(new Print());
             commandList.Add(new Clear());
+            commandList.Add(new ReadFile());
             CommandHandler ch = new CommandHandler(commandList);
             ch.CHCommandList.Add(new Help());
 
@@ -73,8 +74,9 @@ namespace c_term
         static string getUses()
         {
             string ctfile = Path.GetTempPath() + "cterm.ct";
-            string text = File.ReadAllText(ctfile);
-            return text == "1" ? "1st" : text == "2" ? "2nd" : text == "3" ? "3rd" : text + "th"; 
+            string specific = File.ReadAllText(ctfile);
+            string text = specific[specific.Length - specific.Length + 1].ToString();
+            return text == "1" ? $"{specific}st" : text == "2" ? $"{specific}nd" : text == "3" ? $"{specific}rd" : specific + "th"; 
         }
     }
 }
