@@ -23,6 +23,7 @@ namespace c_term
             List<Command> commandList = new List<Command>();
             commandList.Add(new Ping());
             commandList.Add(new SetTitle());
+            commandList.Add(new Print());
             CommandHandler ch = new CommandHandler(commandList);
             ch.CHCommandList.Add(new Help());
 
