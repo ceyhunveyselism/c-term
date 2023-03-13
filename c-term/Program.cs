@@ -26,6 +26,7 @@ namespace c_term
             commandList.Add(new SlowPrint());
             commandList.Add(new Print());
             commandList.Add(new Clear());
+            commandList.Add(new WriteFile());
             commandList.Add(new CreateFile());
             commandList.Add(new ReadFile());
             CommandHandler ch = new CommandHandler(commandList);
