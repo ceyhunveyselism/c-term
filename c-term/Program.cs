@@ -5,9 +5,11 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Collections;
+using c_term.Commands;
 
 namespace c_term
 {
+    
     internal class Program
     {
         static void Main(string[] args)
@@ -16,9 +18,13 @@ namespace c_term
             usesUpdate();
             Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("b4-v0.1.2 | Type help for commands\n");
+            Console.WriteLine("b5-v1.1.2 | Type help for commands\n");
 
-            while(true)
+            List<Command> commandList = new List<Command>();
+            commandList.Add(new Ping());
+            CommandHandler ch = new CommandHandler(commandList);
+
+            while (true)
             {
                 Console.Write("main-> ");
                 string MAIN_ENTRY = Console.ReadLine();
@@ -26,33 +32,22 @@ namespace c_term
                 string command = MAIN_ENTRY.Split(' ')[0];
                 var arguments = new ArrayList(MAIN_ENTRY.Split(' ').Skip(1).ToArray().ToList());
 
-                if(command == "ping")
-                {
-                    if(arguments.Count == 0)
-                    {
-                        Console.WriteLine("Pong!");
-                    } else
-                    {
-                        Console.WriteLine("Pong! Excessive arguments: " + join(arguments, ","));
-                    }
-                } else
+                CommandReply reply = ch.runCommand(command, arguments);
+                if(reply.error && !(reply.explanation == "CNF"))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Failed to recognize command.");
+                    Console.WriteLine("Command " + command + " encountered an error: " + reply.explanation);
+                    Console.ResetColor();
+                } else if(!reply.error)
+                {
+                    Console.WriteLine(reply.explanation);
+                } else if(reply.error && reply.explanation == "CNF")
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Command not found/recognized. Check help if you are missing something.");
                     Console.ResetColor();
                 }
-
             }
-        }
-
-        static string join(ArrayList al, string delimiter)
-        {
-            string str = "";
-            for(int i = 0; i < al.Count; i++)
-            {
-                str += al[i] + (i != al.Count - 1 ? $"{delimiter} " : " ");
-            }
-            return str;
         }
 
         static string usesUpdate()
@@ -78,3 +73,10 @@ namespace c_term
         }
     }
 }
+
+
+
+
+
+
+

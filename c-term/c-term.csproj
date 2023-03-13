@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Ping.cs" />
+    <Compile Include="_QF.cs" />
+    <Compile Include="CommandHandler.cs" />
+    <Compile Include="CommandReply.cs" />
+    <Compile Include="Command.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
