@@ -18,10 +18,11 @@ namespace c_term
             usesUpdate();
             Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("b5-v1.1.2 | Type help for commands\n");
+            Console.WriteLine("b6-v1.1.3 | Type help for commands\n");
 
             List<Command> commandList = new List<Command>();
             commandList.Add(new Ping());
+            commandList.Add(new SetTitle());
             CommandHandler ch = new CommandHandler(commandList);
 
             while (true)
@@ -29,7 +30,7 @@ namespace c_term
                 Console.Write("main-> ");
                 string MAIN_ENTRY = Console.ReadLine();
 
-                string command = MAIN_ENTRY.Split(' ')[0];
+                string command = MAIN_ENTRY.Split(' ')[0].ToLower();
                 var arguments = new ArrayList(MAIN_ENTRY.Split(' ').Skip(1).ToArray().ToList());
 
                 CommandReply reply = ch.runCommand(command, arguments);
