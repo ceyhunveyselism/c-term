@@ -28,7 +28,14 @@ namespace c_term.Commands
                 return new CommandReply(true, "File not found [0x03]");
             } else
             {
-                return new CommandReply(false, File.ReadAllText(_QF.join(arguments, "")));
+                string rf = File.ReadAllText(_QF.join(arguments, ""));
+                if(rf == "")
+                {
+                    return new CommandReply(false, "Nothing in file");
+                } else
+                {
+                    return new CommandReply(false, rf);
+                }
             }
         }
     }
