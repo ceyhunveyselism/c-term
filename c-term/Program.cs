@@ -24,6 +24,7 @@ namespace c_term
             commandList.Add(new Ping());
             commandList.Add(new SetTitle());
             CommandHandler ch = new CommandHandler(commandList);
+            ch.CHCommandList.Add(new Help());
 
             while (true)
             {

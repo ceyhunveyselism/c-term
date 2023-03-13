@@ -22,6 +22,5 @@ namespace c_term
             }
             return str;
         }
-
     }
 }

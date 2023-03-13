@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CHCommand.cs" />
+    <Compile Include="Commands\Help.cs" />
     <Compile Include="Commands\SetTitle.cs" />
     <Compile Include="Commands\Ping.cs" />
     <Compile Include="_QF.cs" />

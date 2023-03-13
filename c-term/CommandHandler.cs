@@ -9,7 +9,8 @@ namespace c_term
 {
     class CommandHandler
     {
-        public List<Command> CommandList;
+        public List<Command> CommandList = new List<Command>();
+        public List<CHCommand> CHCommandList = new List<CHCommand>();
         public CommandHandler(List<Command> CommandList)
         {
             this.CommandList = CommandList;
@@ -25,6 +26,22 @@ namespace c_term
                     if (commandName == currentCommand.aliases[a])
                     {
                         return currentCommand.run(arguments);
+                    }
+                }
+            }
+            return runCHCommand(commandName, arguments);
+        }
+
+        public CommandReply runCHCommand(string commandName, ArrayList arguments)
+        {
+            for (int i = 0; i < CHCommandList.Count; i++)
+            {
+                CHCommand currentCommand = CHCommandList[i];
+                for (int a = 0; a < currentCommand.aliases.Length; a++)
+                {
+                    if (commandName == currentCommand.aliases[a])
+                    {
+                        return currentCommand.run(this, arguments);
                     }
                 }
             }
@@ -44,7 +61,20 @@ namespace c_term
                     }
                 }
             }
+            for (int i = 0; i < CHCommandList.Count; i++)
+            {
+                CHCommand currentCommand = CHCommandList[i];
+                for (int a = 0; i < currentCommand.aliases.Length; a++)
+                {
+                    if (commandName == currentCommand.aliases[a])
+                    {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
+
+        
     }
 }
