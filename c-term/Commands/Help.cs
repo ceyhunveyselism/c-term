@@ -16,7 +16,7 @@ namespace c_term.Commands
             usage = "help [command]";
         }
 
-        public override CommandReply run(CommandHandler handler, ArrayList arguments)
+        public override CommandReply run(CommandHandler handler, List<string> arguments)
         {
             string helpString = "--- NORMAL COMMANDS ---\n";
 

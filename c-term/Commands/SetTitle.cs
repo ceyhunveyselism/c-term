@@ -17,7 +17,7 @@ namespace c_term.Commands
             usage = "settitle <title>";
             aliases = new string[] { "title", "settitle", "windowtitle", "swt"};
         }
-        public override CommandReply run(ArrayList arguments)
+        public override CommandReply run(List<string> arguments)
         {
             if(arguments.Count < 1)
             {

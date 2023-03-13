@@ -18,11 +18,12 @@ namespace c_term
             usesUpdate();
             Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("b7-v1.2.3 | Type help for commands\n");
+            Console.WriteLine("b8-v1.3.3 | Type help for commands\n");
 
             List<Command> commandList = new List<Command>();
             commandList.Add(new Ping());
             commandList.Add(new SetTitle());
+            commandList.Add(new SlowPrint());
             commandList.Add(new Print());
             CommandHandler ch = new CommandHandler(commandList);
             ch.CHCommandList.Add(new Help());
@@ -33,15 +34,15 @@ namespace c_term
                 string MAIN_ENTRY = Console.ReadLine();
 
                 string command = MAIN_ENTRY.Split(' ')[0].ToLower();
-                var arguments = new ArrayList(MAIN_ENTRY.Split(' ').Skip(1).ToArray().ToList());
+                var arguments = new List<string>(MAIN_ENTRY.Split(' ').Skip(1).ToArray().ToList());
 
                 CommandReply reply = ch.runCommand(command, arguments);
-                if(reply.error && !(reply.explanation == "CNF"))
+                if(reply.error && !(reply.explanation == "CNF") && !(reply.explanation == "DNP"))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Command " + command + " encountered an error: " + reply.explanation);
                     Console.ResetColor();
-                } else if(!reply.error)
+                } else if(!reply.error && !(reply.explanation == "DNP"))
                 {
                     Console.WriteLine(reply.explanation);
                 } else if(reply.error && reply.explanation == "CNF")

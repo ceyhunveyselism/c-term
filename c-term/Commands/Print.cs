@@ -16,7 +16,7 @@ namespace c_term.Commands
             aliases = new string[] { "print", "echo", "lb" };
         }
 
-        public override CommandReply run(ArrayList arguments)
+        public override CommandReply run(List<string> arguments)
         {
             if(arguments.Count < 1)
             {

@@ -13,7 +13,7 @@ namespace c_term
         public string[] aliases;
         public string usage = "N/A";
 
-        public virtual CommandReply run(CommandHandler handler, ArrayList arguments)
+        public virtual CommandReply run(CommandHandler handler, List<string> arguments)
         {
             return new CommandReply(false, "N/A");
         }

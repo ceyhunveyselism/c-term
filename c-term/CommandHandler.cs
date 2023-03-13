@@ -16,7 +16,7 @@ namespace c_term
             this.CommandList = CommandList;
         }
 
-        public CommandReply runCommand(string commandName, ArrayList arguments)
+        public CommandReply runCommand(string commandName, List<string> arguments)
         {
             for (int i = 0; i < CommandList.Count; i++)
             {
@@ -32,7 +32,7 @@ namespace c_term
             return runCHCommand(commandName, arguments);
         }
 
-        public CommandReply runCHCommand(string commandName, ArrayList arguments)
+        public CommandReply runCHCommand(string commandName, List<string> arguments)
         {
             for (int i = 0; i < CHCommandList.Count; i++)
             {

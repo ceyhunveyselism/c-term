@@ -9,7 +9,7 @@ namespace c_term
 {
     class _QF
     {
-        public static string join(ArrayList al, string delimiter)
+        public static string join(List<string> al, string delimiter)
         {
             string str = "";
             bool space = delimiter == " ";
