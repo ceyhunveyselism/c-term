@@ -12,19 +12,9 @@ namespace c_term
         public static string join(List<string> al, string delimiter)
         {
             string str = "";
-            bool space = delimiter == " ";
             for (int i = 0; i < al.Count; i++)
             {
-                if (delimiter != "")
-                {
-                    if (!space)
-                        str += al[i] + (i != al.Count - 1 ? $"{delimiter} " : " ");
-                    else
-                        str += al[i] + (i != al.Count - 1 ? " " : "");
-                } else if(delimiter == "")
-                {
-                    str += al[i];
-                }
+                str += al[i] + ((i != al.Count - 1) ? delimiter : "");
             }
             return str;
         }

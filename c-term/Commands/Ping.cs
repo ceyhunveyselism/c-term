@@ -19,7 +19,7 @@ namespace c_term.Commands
 
         public override CommandReply run(List<string> arguments)
         {
-            return new CommandReply(false, arguments.Count >= 1 ? "Ping! Additional arguments: " + _QF.join(arguments, ",") : "Ping!");
+            return new CommandReply(false, arguments.Count >= 1 ? "Ping! Additional arguments: " + _QF.join(arguments, ", ") : "Ping!");
         }
     }
 }

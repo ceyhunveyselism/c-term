@@ -24,6 +24,7 @@ namespace c_term
             commandList.Add(new Ping());
             commandList.Add(new SetTitle());
             commandList.Add(new SlowPrint());
+            commandList.Add(new ListDirectory());
             commandList.Add(new Print());
             commandList.Add(new Clear());
             commandList.Add(new WriteFile());
