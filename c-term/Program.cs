@@ -18,20 +18,23 @@ namespace c_term
             usesUpdate();
             Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("b15-v1.5.8 | Type help for commands\n");
+            Console.WriteLine("b16-v1.5.9 | Type help for commands\n");
 
-            List<Command> commandList = new List<Command>();
-            commandList.Add(new Ping());
-            commandList.Add(new SetTitle());
-            commandList.Add(new SlowPrint());
-            commandList.Add(new ListDirectory());
-            commandList.Add(new Print());
-            commandList.Add(new Clear());
-            commandList.Add(new WriteFile());
-            commandList.Add(new CreateFile());
-            commandList.Add(new ReadFile());
+            List<Command> commandList = new List<Command>
+            {
+                new Ping(),
+                new SetTitle(),
+                new SlowPrint(),
+                new ListDirectory(),
+                new Print(),
+                new Clear(),
+                new WriteFile(),
+                new CreateFile(),
+                new ReadFile()
+            };
             CommandHandler ch = new CommandHandler(commandList);
             ch.CHCommandList.Add(new Help());
+            bool awesome = false;
 
             while (true)
             {
@@ -41,12 +44,21 @@ namespace c_term
                 string command = MAIN_ENTRY.Split(' ')[0].ToLower();
                 var arguments = new List<string>(MAIN_ENTRY.Split(' ').Skip(1).ToArray().ToList());
 
+                // shhhhhhh..
+                if(command == "awesome")
+                {
+                    awesome = true;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("awesome indeed :)");
+                    continue;
+                }
+
                 CommandReply reply = ch.runCommand(command, arguments);
                 if(reply.error && !(reply.explanation == "CNF") && !(reply.explanation == "DNP"))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Command " + command + " encountered an error: " + reply.explanation);
-                    Console.ResetColor();
+                    if (!awesome) Console.ResetColor(); else Console.ForegroundColor = ConsoleColor.DarkGreen;
                 } else if(!reply.error && !(reply.explanation == "DNP"))
                 {
                     Console.WriteLine(reply.explanation);
@@ -54,7 +66,7 @@ namespace c_term
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Command not found/recognized. Check help if you are missing something.");
-                    Console.ResetColor();
+                    if (!awesome) Console.ResetColor(); else Console.ForegroundColor = ConsoleColor.DarkGreen;
                 }
             }
         }
