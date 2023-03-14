@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Hosting;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,19 @@ namespace c_term.Commands
 
         public override CommandReply run(CommandHandler handler, List<string> arguments)
         {
+            if(arguments.Count > 0)
+            {
+                for(int i = 0; i < handler.CommandList.Count; i++)
+                {
+                    if (handler.CommandList[i].aliases.Contains<string>(arguments[0]))
+                    {
+                        Command currentCommand = handler.CommandList[i];
+                        return new CommandReply(false, "Aliases: [" + String.Join(", ", currentCommand.aliases) + "] | Description: " + currentCommand.description + " | Usage: " + currentCommand.usage + "\n");
+                    }
+                }
+                return new CommandReply(true, "Command not found [0x05]");
+            }
+
             string helpString = "--- NORMAL COMMANDS ---\n";
 
             for(int i = 0; i < handler.CommandList.Count; i++)
