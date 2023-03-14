@@ -18,7 +18,7 @@ namespace c_term
             usesUpdate();
             Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("b16-v1.5.9 | Type help for commands\n");
+            Console.WriteLine("b17-v1.6.0 | Type help for commands\n");
 
             List<Command> commandList = new List<Command>
             {
@@ -35,7 +35,7 @@ namespace c_term
             CommandHandler ch = new CommandHandler(commandList);
             ch.CHCommandList.Add(new Help());
             bool awesome = false;
-
+            Console.ForegroundColor = ConsoleColor.White;
             while (true)
             {
                 Console.Write("main-> ");
@@ -47,9 +47,9 @@ namespace c_term
                 // shhhhhhh..
                 if(command == "awesome")
                 {
-                    awesome = true;
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("awesome indeed :)");
+                    awesome = !awesome;
+                    Console.ForegroundColor = (awesome == true) ? ConsoleColor.DarkGreen : ConsoleColor.White;
+                    Console.WriteLine((awesome == true) ? "awesome indeed :)" : "no longer awesome :(");
                     continue;
                 }
 
@@ -58,7 +58,7 @@ namespace c_term
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Command " + command + " encountered an error: " + reply.explanation);
-                    if (!awesome) Console.ResetColor(); else Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    if (!awesome) Console.ForegroundColor = ConsoleColor.White; else Console.ForegroundColor = ConsoleColor.DarkGreen;
                 } else if(!reply.error && !(reply.explanation == "DNP"))
                 {
                     Console.WriteLine(reply.explanation);
@@ -66,7 +66,7 @@ namespace c_term
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Command not found/recognized. Check help if you are missing something.");
-                    if (!awesome) Console.ResetColor(); else Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    if (!awesome) Console.ForegroundColor = ConsoleColor.White; else Console.ForegroundColor = ConsoleColor.DarkGreen;
                 }
             }
         }
