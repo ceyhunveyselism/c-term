@@ -18,7 +18,7 @@ namespace c_term
             usesUpdate();
             Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("b14-v1.5.7 | Type help for commands\n");
+            Console.WriteLine("b15-v1.5.8 | Type help for commands\n");
 
             List<Command> commandList = new List<Command>();
             commandList.Add(new Ping());
