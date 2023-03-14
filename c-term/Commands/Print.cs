@@ -23,7 +23,7 @@ namespace c_term.Commands
                 return new CommandReply(true, "Not enough arguments provided [0x01]");
             } else
             {
-                return new CommandReply(false, _QF.join(arguments, " "));
+                return new CommandReply(false, _QF.join(arguments, " ").Replace("\\n", "\n"));
             }
         }
     }
