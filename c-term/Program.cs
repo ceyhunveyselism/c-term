@@ -90,7 +90,7 @@ namespace c_term
         {
             string ctfile = Path.GetTempPath() + "cterm.ct";
             string specific = File.ReadAllText(ctfile);
-            string text = specific[specific.Length - specific.Length + 1].ToString();
+            string text = specific[specific.Length - 1].ToString();
             return text == "1" ? $"{specific}st" : text == "2" ? $"{specific}nd" : text == "3" ? $"{specific}rd" : specific + "th"; 
         }
     }
