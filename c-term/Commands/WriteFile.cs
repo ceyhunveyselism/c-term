@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace c_term.Commands
 {
-    class WriteFile: Command
+    class WriteFile: CHCommand
     {
         public WriteFile()
         {
@@ -17,7 +17,7 @@ namespace c_term.Commands
             aliases = new string[] { "wf", "write" };
         }
 
-        public override CommandReply run(List<string> arguments)
+        public override CommandReply run(CommandHandler handler, List<string> arguments)
         {
             if(arguments.Count < 2)
             {
@@ -47,7 +47,7 @@ namespace c_term.Commands
                 File.WriteAllText(arguments[0], arguments[1]);
             } else
             {
-                File.WriteAllText(arguments[0], File.ReadAllText(arguments[0]) + arguments[1]);
+                File.WriteAllText(handler.currentDirectory + "\\" + arguments[0], File.ReadAllText(handler.currentDirectory + "\\" + arguments[0]) + arguments[1]);
             }
 
             return new CommandReply(false, "Successfully written data onto file");

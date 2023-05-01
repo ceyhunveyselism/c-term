@@ -7,7 +7,7 @@ using System.IO;
 
 namespace c_term.Commands
 {
-    class CreateFile: Command
+    class CreateFile: CHCommand
     {
         public CreateFile()
         {
@@ -16,7 +16,7 @@ namespace c_term.Commands
             aliases = new string[] { "createfile", "makefile","mf","cf" };
         }
 
-        public override CommandReply run(List<string> arguments)
+        public override CommandReply run(CommandHandler handler, List<string> arguments)
         {
             if(arguments.Count < 1)
             {
@@ -30,7 +30,7 @@ namespace c_term.Commands
 
             try
             {
-                File.Create(_QF.join(arguments, "")).Close();
+                File.Create(handler.currentDirectory + "\\" + _QF.join(arguments, "")).Close();
                 return new CommandReply(false, "Successfully created file");
             }
             catch

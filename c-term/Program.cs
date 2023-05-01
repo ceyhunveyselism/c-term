@@ -25,20 +25,20 @@ namespace c_term
                 new Ping(),
                 new SetTitle(),
                 new SlowPrint(),
-                new ListDirectory(),
                 new Print(),
                 new Clear(),
-                new WriteFile(),
-                new CreateFile(),
-                new ReadFile()
             };
             CommandHandler ch = new CommandHandler(commandList);
             ch.CHCommandList.Add(new Help());
+            ch.CHCommandList.Add(new CreateFile());
+            ch.CHCommandList.Add(new ListDirectory());
+            ch.CHCommandList.Add(new WriteFile());
+            ch.CHCommandList.Add(new ReadFile());
             bool awesome = false;
             Console.ForegroundColor = ConsoleColor.White;
             while (true)
             {
-                Console.Write("main-> ");
+                Console.Write(ch.currentDirectory + "-> ");
                 string MAIN_ENTRY = Console.ReadLine();
 
                 string command = MAIN_ENTRY.Split(' ')[0].ToLower();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace c_term
 {
     class CommandHandler
     {
+        public string currentDirectory = Directory.GetCurrentDirectory();
+
         public List<Command> CommandList = new List<Command>();
         public List<CHCommand> CHCommandList = new List<CHCommand>();
         public CommandHandler(List<Command> CommandList)

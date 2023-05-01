@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace c_term.Commands
 {
-    class ListDirectory: Command
+    class ListDirectory: CHCommand
     {
         public ListDirectory()
         {
@@ -16,18 +16,18 @@ namespace c_term.Commands
             aliases = new string[] { "listdir", "listdirectory", "dir" };
         }
 
-        public override CommandReply run(List<string> arguments)
+        public override CommandReply run(CommandHandler handler, List<string> arguments)
         {
-            string pathing = _QF.join(Directory.GetFiles(Directory.GetCurrentDirectory()).ToList<string>(), "\n");
+            string pathing = _QF.join(Directory.GetFiles(handler.currentDirectory).ToList(), "\n");
             if(arguments.Count > 0)
             {
                 List<string> newPathing = new List<string>();
                 List<string> newerPathing = new List<string>();
-                newPathing = Directory.GetFiles(Directory.GetCurrentDirectory()).ToList<string>();
+                newPathing = Directory.GetFiles(Directory.GetCurrentDirectory()).ToList();
 
                 for(int i = 0; i < newPathing.Count; i++)
                 {
-                    List<string> newernewerPathing = new List<string>(newPathing[i].Split('\\').ToList<string>()); // GOD IM FUCKING DONE WITH MAKING LISTS FOR FUCKS SAKE THIS IS THE 3RD FUCKING TIME
+                    List<string> newernewerPathing = new List<string>(newPathing[i].Split('\\').ToList()); // GOD IM FUCKING DONE WITH MAKING LISTS FOR FUCKS SAKE THIS IS THE 3RD FUCKING TIME
                     newerPathing.Add(newernewerPathing[newernewerPathing.Count - 1]);
                 }
 

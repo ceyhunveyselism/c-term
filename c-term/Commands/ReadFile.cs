@@ -8,7 +8,7 @@ using System.IO;
 
 namespace c_term.Commands
 {
-    class ReadFile: Command
+    class ReadFile: CHCommand
     {
         public ReadFile()
         {
@@ -17,7 +17,7 @@ namespace c_term.Commands
             aliases = new string[] { "readfile", "rf", "read" };
         }
 
-        public override CommandReply run(List<string> arguments)
+        public override CommandReply run(CommandHandler handler, List<string> arguments)
         {
             if(arguments.Count < 1)
             {
@@ -28,7 +28,7 @@ namespace c_term.Commands
                 return new CommandReply(true, "File not found [0x03]");
             } else
             {
-                string rf = File.ReadAllText(_QF.join(arguments, ""));
+                string rf = File.ReadAllText(handler.currentDirectory + "\\" + _QF.join(arguments, ""));
                 if(rf == "")
                 {
                     return new CommandReply(false, "Nothing in file");
