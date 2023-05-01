@@ -18,7 +18,7 @@ namespace c_term
             usesUpdate();
             Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("b18-v1.6.1 | Type help for commands\n");
+            Console.WriteLine("b20-v1.7.0 | Type help for commands\n");
 
             List<Command> commandList = new List<Command>
             {
@@ -31,14 +31,17 @@ namespace c_term
                 new CreateFile(),
                 new ListDirectory(),
                 new WriteFile(),
-                new ReadFile()
+                new ReadFile(),
+                new Settings()
             };
             CommandHandler ch = new CommandHandler(commandList);
             bool awesome = false;
             Console.ForegroundColor = ConsoleColor.White;
             while (true)
             {
-                Console.Write(ch.currentDirectory + "-> ");
+                string display;
+                if(ch.showCurrentDirectoryFull) { display = ch.currentDirectory;  } else if(ch.showCurrentDirectory) { display = ch.currentDirectory.Split('\\').Last(); } else { display = "";  };
+                Console.Write(display + ch.cdStartingPrefix + " ");
                 string MAIN_ENTRY = Console.ReadLine();
 
                 string command = MAIN_ENTRY.Split(' ')[0].ToLower();

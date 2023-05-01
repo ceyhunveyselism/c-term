@@ -11,7 +11,9 @@ namespace c_term
     class CommandHandler
     {
         public string currentDirectory = Directory.GetCurrentDirectory();
-
+        public string cdStartingPrefix = "->";
+        public bool showCurrentDirectoryFull = false;
+        public bool showCurrentDirectory = true;
         public List<Command> CommandList = new List<Command>();
         public CommandHandler(List<Command> CommandList)
         {
