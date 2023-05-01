@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace c_term.Commands
 {
@@ -28,9 +23,10 @@ namespace c_term.Commands
         {
             try
             {
-                int ms = Int32.Parse((string)arguments[0]) / arguments[1].Length;
+                int arg0 = int.Parse(arguments[0]);
                 arguments.RemoveAt(0);
                 string str = String.Join(" ", arguments.ToArray());
+                int ms = arg0 / str.Length;
                 for (int i = 0; i < str.Length; i++)
                 {
                     Console.Write(str[i]);
