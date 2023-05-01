@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace c_term.Commands
 {
-    class ListDirectory: CHCommand
+    class ListDirectory: Command
     {
         public ListDirectory()
         {
+            name = "ListDirectory";
             description = "Lists every file in the current directory.";
             usage = "listdir [don't use full path?]";
             aliases = new string[] { "listdir", "listdirectory", "dir" };

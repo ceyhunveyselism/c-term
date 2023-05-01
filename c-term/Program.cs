@@ -27,13 +27,13 @@ namespace c_term
                 new SlowPrint(),
                 new Print(),
                 new Clear(),
+                new Help(),
+                new CreateFile(),
+                new ListDirectory(),
+                new WriteFile(),
+                new ReadFile()
             };
             CommandHandler ch = new CommandHandler(commandList);
-            ch.CHCommandList.Add(new Help());
-            ch.CHCommandList.Add(new CreateFile());
-            ch.CHCommandList.Add(new ListDirectory());
-            ch.CHCommandList.Add(new WriteFile());
-            ch.CHCommandList.Add(new ReadFile());
             bool awesome = false;
             Console.ForegroundColor = ConsoleColor.White;
             while (true)

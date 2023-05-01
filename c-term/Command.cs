@@ -12,8 +12,9 @@ namespace c_term
         public string description = "N/A";
         public string[] aliases;
         public string usage = "N/A";
+        public string name = "N/A";
 
-        public virtual CommandReply run(List<string> arguments)
+        public virtual CommandReply run(CommandHandler handler, List<string> arguments)
         {
             return new CommandReply(false, arguments.Count >= 1 ? "N/A" : "N/A - Arguments: " + _QF.join(arguments, ","));
         }

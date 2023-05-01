@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CHCommand.cs" />
     <Compile Include="Commands\ListDirectory.cs" />
     <Compile Include="Commands\WriteFile.cs" />
     <Compile Include="Commands\CreateFile.cs" />

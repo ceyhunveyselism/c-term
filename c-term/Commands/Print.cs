@@ -11,12 +11,13 @@ namespace c_term.Commands
     {
         public Print()
         {
+            name = "Print";
             description = "Prints/echoes back the argument. Requires arguments.";
             usage = "print [text]";
             aliases = new string[] { "print", "echo", "lb" };
         }
 
-        public override CommandReply run(List<string> arguments)
+        public override CommandReply run(CommandHandler handler, List<string> arguments)
         {
             if(arguments.Count < 1)
             {

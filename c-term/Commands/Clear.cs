@@ -11,11 +11,12 @@ namespace c_term.Commands
         public Clear()
         {
             description = "Clears the console.";
+            name = "Clear";
             aliases = new string[] { "clr", "cls", "clear" };
             usage = "clear";
         }
 
-        public override CommandReply run(List<string> arguments)
+        public override CommandReply run(CommandHandler handler, List<string> arguments)
         {
             Console.Clear();
             return new CommandReply(false, "Cleared the console.");

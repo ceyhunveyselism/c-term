@@ -7,13 +7,14 @@ using System.IO;
 
 namespace c_term.Commands
 {
-    class CreateFile: CHCommand
+    class CreateFile: Command
     {
         public CreateFile()
         {
+            name = "CreateFile";
             description = "Creates a file using the first argument.";
             usage = "createfile [file]";
-            aliases = new string[] { "createfile", "makefile","mf","cf" };
+            aliases = new string[] { "createfile", "makefile","mf","cf","touch"};
         }
 
         public override CommandReply run(CommandHandler handler, List<string> arguments)

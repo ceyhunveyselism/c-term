@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace c_term.Commands
 {
-    class Help: CHCommand
+    class Help: Command
     {
         public Help()
         {
+            name = "Help";
             description = "The help command. Shows how to use all commands, what aliases they have, and the description of them.";
             aliases = new string[] { "help", "cmds", "commands" };
             usage = "help [command]";
@@ -23,7 +24,7 @@ namespace c_term.Commands
             {
                 for(int i = 0; i < handler.CommandList.Count; i++)
                 {
-                    if (handler.CommandList[i].aliases.Contains<string>(arguments[0]))
+                    if (handler.CommandList[i].aliases.Contains(arguments[0]))
                     {
                         Command currentCommand = handler.CommandList[i];
                         return new CommandReply(false, "Aliases: [" + String.Join(", ", currentCommand.aliases) + "] | Description: " + currentCommand.description + " | Usage: " + currentCommand.usage + "\n");
@@ -32,20 +33,12 @@ namespace c_term.Commands
                 return new CommandReply(true, "Command not found [0x05]");
             }
 
-            string helpString = "--- NORMAL COMMANDS ---\n";
+            string helpString = "";
 
             for(int i = 0; i < handler.CommandList.Count; i++)
             {
                 Command currentCommand = handler.CommandList[i];
-                helpString += "[" + (i+1) + "] " + "Aliases: [" + String.Join(", ", currentCommand.aliases) + "] | Description: " + currentCommand.description + " | Usage: " + currentCommand.usage + "\n";
-            }
-
-            helpString += "--- CH COMMANDS ---\n";
-
-            for (int i = 0; i < handler.CHCommandList.Count; i++)
-            {
-                CHCommand currentCommand = handler.CHCommandList[i];
-                helpString += "[" + (i+1) + "] " + String.Join(", ", currentCommand.aliases) + "] | Description: " + currentCommand.description + " | Usage: " + currentCommand.usage + "\n";
+                helpString += "Command #" + (i+1) + ": " + "Name: " + currentCommand.name + " | " + "Aliases: [" + String.Join(", ", currentCommand.aliases) + "] | Description: " + currentCommand.description + " | Usage: " + currentCommand.usage + "\n";
             }
 
             return new CommandReply(false, helpString);

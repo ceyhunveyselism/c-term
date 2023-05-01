@@ -13,11 +13,12 @@ namespace c_term.Commands
     {
         public SetTitle()
         {
+            name = "SetTitle";
             description = "Sets the title of the console window.";
             usage = "settitle <title>";
             aliases = new string[] { "title", "settitle", "windowtitle", "swt"};
         }
-        public override CommandReply run(List<string> arguments)
+        public override CommandReply run(CommandHandler handler, List<string> arguments)
         {
             if(arguments.Count < 1)
             {

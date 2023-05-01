@@ -8,10 +8,11 @@ using System.IO;
 
 namespace c_term.Commands
 {
-    class ReadFile: CHCommand
+    class ReadFile: Command
     {
         public ReadFile()
         {
+            name = "ReadFile";
             description = "Reads file at [argument 1].";
             usage = "readfile [path to file]";
             aliases = new string[] { "readfile", "rf", "read" };

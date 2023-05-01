@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace c_term.Commands
 {
-    class WriteFile: CHCommand
+    class WriteFile: Command
     {
         public WriteFile()
         {
-            description = "Writes data onto an already existant file.";
+            name = "WriteFile";
+            description = "Writes or overwrites data onto an already existant file.";
             usage = "writefile <path> <data> [overwrite? 0/1]";
             aliases = new string[] { "wf", "write" };
         }

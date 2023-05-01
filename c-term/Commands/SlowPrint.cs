@@ -18,12 +18,13 @@ namespace c_term.Commands
 
         public SlowPrint()
         {
+            name = "SlowPrint";
             description = "Prints [argument 2] over the duration of [argument 1].";
             aliases = new string[] { "sp", "slowecho", "why", "slowprint" }; // Little easter egg. I'm just asking why the fuck Delta even has a slowprint command in his terminal.
             usage = "slowprint [time (ms)] [text]";
         }
 
-        public override CommandReply run(List<string> arguments)
+        public override CommandReply run(CommandHandler handler, List<string> arguments)
         {
             try
             {
