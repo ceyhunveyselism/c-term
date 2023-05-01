@@ -29,9 +29,11 @@ namespace c_term.Commands
             try
             {
                 int ms = Int32.Parse((string)arguments[0]) / arguments[1].Length;
-                for (int i = 0; i < arguments[1].Length; i++)
+                arguments.RemoveAt(0);
+                string str = String.Join(" ", arguments.ToArray());
+                for (int i = 0; i < str.Length; i++)
                 {
-                    Console.Write(arguments[1][i]);
+                    Console.Write(str[i]);
                     Thread.Sleep(ms);
                 }
                 Console.WriteLine();
