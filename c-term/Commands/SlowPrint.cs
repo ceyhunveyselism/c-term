@@ -37,7 +37,7 @@ namespace c_term.Commands
             }
             catch
             {
-                return new CommandReply(true, "Incorrect argument 1 [0x02]");
+                return new CommandReply(true, "Incorrect argument 1");
             }
             
         }

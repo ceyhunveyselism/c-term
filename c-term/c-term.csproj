@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Browse.cs" />
+    <Compile Include="Commands\DeleteFile.cs" />
     <Compile Include="Commands\Settings.cs" />
     <Compile Include="Commands\ListDirectory.cs" />
     <Compile Include="Commands\WriteFile.cs" />

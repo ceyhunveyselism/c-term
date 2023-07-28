@@ -21,7 +21,7 @@ namespace c_term.Commands
         {
             if(arguments.Count < 1)
             {
-                return new CommandReply(true, "Not enough arguments provided [0x01]");
+                return new CommandReply(true, "Not enough arguments provided");
             } else
             {
                 return new CommandReply(false, _QF.join(arguments, " ").Replace("\\n", "\n"));

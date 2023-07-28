@@ -21,12 +21,12 @@ namespace c_term.Commands
         {
             if(arguments.Count < 1)
             {
-                return new CommandReply(true, "Not enough arguments provided [0x01]");
+                return new CommandReply(true, "Not enough arguments provided");
             }
 
-            if(File.Exists(_QF.join(arguments, "")))
+            if (File.Exists(handler.currentDirectory + "\\" + string.Join(" ", arguments)))
             {
-                return new CommandReply(true, "File already exists [0x04]");
+                return new CommandReply(true, "File already exists");
             }
 
             try
@@ -36,7 +36,7 @@ namespace c_term.Commands
             }
             catch
             {
-                return new CommandReply(true, "Something went wrong [FATAL ERROR]");
+                return new CommandReply(true, "Something went wrong.");
             }
         }
     }

@@ -26,7 +26,7 @@ namespace c_term.Commands
             }
 
             if(!File.Exists(_QF.join(arguments, ""))) {
-                return new CommandReply(true, "File not found [0x03]");
+                return new CommandReply(true, "File not found");
             } else
             {
                 string rf = File.ReadAllText(handler.currentDirectory + "\\" + _QF.join(arguments, ""));

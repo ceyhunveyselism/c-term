@@ -10,7 +10,8 @@ namespace c_term
 {
     class CommandHandler
     {
-        public string currentDirectory = Directory.GetCurrentDirectory();
+        public string currentDirectory = Directory.GetCurrentDirectory() + "\\";
+        public readonly string firstDirectory = Directory.GetCurrentDirectory() + "\\";
         public string cdStartingPrefix = "->";
         public bool showCurrentDirectoryFull = false;
         public bool showCurrentDirectory = true;

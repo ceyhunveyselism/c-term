@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Collections;
 using c_term.Commands;
 
+// Fun Fact: Making modifications to this file is a headache. Please don't.
+
 namespace c_term
 {
     
@@ -18,7 +20,7 @@ namespace c_term
             usesUpdate();
             Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("b20-v1.7.0 | Type help for commands\n");
+            Console.WriteLine("b21-v2.0.0 | Type help for commands\n");
 
             List<Command> commandList = new List<Command>
             {
@@ -32,7 +34,9 @@ namespace c_term
                 new ListDirectory(),
                 new WriteFile(),
                 new ReadFile(),
-                new Settings()
+                new Settings(),
+                new Browse(),
+                new DeleteFile()
             };
             CommandHandler ch = new CommandHandler(commandList);
             bool awesome = false;
@@ -40,12 +44,14 @@ namespace c_term
             while (true)
             {
                 string display;
-                if(ch.showCurrentDirectoryFull) { display = ch.currentDirectory;  } else if(ch.showCurrentDirectory) { display = ch.currentDirectory.Split('\\').Last(); } else { display = "";  };
+                if(ch.showCurrentDirectoryFull) { display = ch.currentDirectory;  } else if(ch.showCurrentDirectory) { string[] arr = ch.currentDirectory.Split('\\'); display = arr[arr.Count() - 2]; } else { display = "";  };
                 Console.Write(display + ch.cdStartingPrefix + " ");
                 string MAIN_ENTRY = Console.ReadLine();
 
                 string command = MAIN_ENTRY.Split(' ')[0].ToLower();
                 var arguments = new List<string>(MAIN_ENTRY.Split(' ').Skip(1).ToArray().ToList());
+
+                if (command.Trim() == "") continue;
 
                 // shhhhhhh..
                 if(command == "awesome")
@@ -98,10 +104,3 @@ namespace c_term
         }
     }
 }
-
-
-
-
-
-
-

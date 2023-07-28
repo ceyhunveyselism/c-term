@@ -35,7 +35,7 @@ namespace c_term.Commands
                 }
             } catch
             {
-                return new CommandReply(true, "Incorrect argument 3 [0x02]");
+                return new CommandReply(true, "Incorrect argument 3");
             }
 
             if (!File.Exists(arguments[0]))

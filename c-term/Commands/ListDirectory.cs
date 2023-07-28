@@ -14,7 +14,7 @@ namespace c_term.Commands
             name = "ListDirectory";
             description = "Lists every file in the current directory.";
             usage = "listdir [don't use full path?]";
-            aliases = new string[] { "listdir", "listdirectory", "dir" };
+            aliases = new string[] { "listdir", "listdirectory", "dir", "ls" };
         }
 
         public override CommandReply run(CommandHandler handler, List<string> arguments)
@@ -31,7 +31,10 @@ namespace c_term.Commands
                     List<string> newernewerPathing = new List<string>(newPathing[i].Split('\\').ToList()); // GOD IM FUCKING DONE WITH MAKING LISTS FOR FUCKS SAKE THIS IS THE 3RD FUCKING TIME
                     newerPathing.Add(newernewerPathing[newernewerPathing.Count - 1]);
                 }
-
+                if (newerPathing[0] == "" && newerPathing.Count == 1)
+                {
+                    return new CommandReply(false, "No files in folder");
+                }
                 return new CommandReply(false, _QF.join(newerPathing, "\n"));
             }
 

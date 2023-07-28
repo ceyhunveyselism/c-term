@@ -22,7 +22,7 @@ namespace c_term.Commands
         {
             if(arguments.Count < 1)
             {
-                return new CommandReply(true, "Not enough arguments provided [0x01]");
+                return new CommandReply(true, "Not enough arguments provided");
             } else
             {
                 Console.Title = _QF.join(arguments, " ");

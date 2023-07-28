@@ -30,7 +30,7 @@ namespace c_term.Commands
                         return new CommandReply(false, "Aliases: [" + String.Join(", ", currentCommand.aliases) + "] | Description: " + currentCommand.description + " | Usage: " + currentCommand.usage + "\n");
                     }
                 }
-                return new CommandReply(true, "Command not found [0x05]");
+                return new CommandReply(true, "Command not found");
             }
 
             string helpString = "";
