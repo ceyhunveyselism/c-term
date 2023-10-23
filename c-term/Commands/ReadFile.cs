@@ -25,7 +25,7 @@ namespace c_term.Commands
                 return new CommandReply(true, "Not enough arguments provided [0x01]");
             }
 
-            if(!File.Exists(_QF.join(arguments, ""))) {
+            if(!File.Exists(handler.currentDirectory + "\\" + _QF.join(arguments, ""))) {
                 return new CommandReply(true, "File not found");
             } else
             {

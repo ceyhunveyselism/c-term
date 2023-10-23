@@ -26,7 +26,7 @@ namespace c_term.Commands
                 while (true)
                 {
                     if (!handler.currentDirectory.EndsWith("\\")) { handler.currentDirectory = handler.currentDirectory + "\\"; }
-                    if (finish) { Console.CursorVisible = true; return new CommandReply(false, "DNP"); };
+                    if (finish) { Console.CursorVisible = true; Console.ForegroundColor = ConsoleColor.White; return new CommandReply(false, "DNP"); };
                     List<string> folders = new List<string>{
                     "../"
                 };

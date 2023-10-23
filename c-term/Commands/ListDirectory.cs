@@ -14,7 +14,7 @@ namespace c_term.Commands
             name = "ListDirectory";
             description = "Lists every file in the current directory.";
             usage = "listdir [don't use full path?]";
-            aliases = new string[] { "listdir", "listdirectory", "dir", "ls" };
+            aliases = new string[] { "listdir", "listdirectory", "dir", "ls", "lsdir" };
         }
 
         public override CommandReply run(CommandHandler handler, List<string> arguments)

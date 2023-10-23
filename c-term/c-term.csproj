@@ -44,6 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Browse.cs" />
+    <Compile Include="Commands\Changes.cs" />
+    <Compile Include="Commands\Length.cs" />
+    <Compile Include="Commands\DeleteDirectory.cs" />
+    <Compile Include="Commands\CreateDirectory.cs" />
+    <Compile Include="Commands\CommandLine.cs" />
+    <Compile Include="Commands\OpenInExplorer.cs" />
+    <Compile Include="Commands\RNG.cs" />
+    <Compile Include="Commands\Evaluate.cs" />
     <Compile Include="Commands\DeleteFile.cs" />
     <Compile Include="Commands\Settings.cs" />
     <Compile Include="Commands\ListDirectory.cs" />

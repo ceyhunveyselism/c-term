@@ -14,13 +14,23 @@ namespace c_term
     
     internal class Program
     {
+        static bool canaryRelease = true;
         static void Main(string[] args)
         {
+            Console.Title = "C-Term v2.0.0";
+            Console.Clear();
             string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             usesUpdate();
-            Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term.");
+            Console.WriteLine($"Hello, {userName.Split('\\')[1]}! This is your {getUses()} time using c-term. {(userName.Split('\\')[1] == "Ceyhun" ? "How's the development going?" : "")}{(userName.Split('\\')[1] == "Deltact" ? "How's EnDe development going?" : "")}");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine("b21-v2.0.0 | Type help for commands\n");
+            if (canaryRelease)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("!! Canary Release !!");
+                Console.ResetColor();
+            }
+            Console.WriteLine("b32-v2.6.2 | Type help for commands\n");
+            
 
             List<Command> commandList = new List<Command>
             {
@@ -36,17 +46,24 @@ namespace c_term
                 new ReadFile(),
                 new Settings(),
                 new Browse(),
-                new DeleteFile()
+                new DeleteFile(),
+                new Evaluate(),
+                new RNG(),
+                new OpenInExplorer(),
+                new CommandLine(),
+                new DeleteDirectory(),
+                new CreateDirectory(),
+                new Length()
             };
             CommandHandler ch = new CommandHandler(commandList);
             bool awesome = false;
-            Console.ForegroundColor = ConsoleColor.White;
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 string display;
                 if(ch.showCurrentDirectoryFull) { display = ch.currentDirectory;  } else if(ch.showCurrentDirectory) { string[] arr = ch.currentDirectory.Split('\\'); display = arr[arr.Count() - 2]; } else { display = "";  };
                 Console.Write(display + ch.cdStartingPrefix + " ");
-                string MAIN_ENTRY = Console.ReadLine();
+                string MAIN_ENTRY = Console.ReadLine().Trim();
 
                 string command = MAIN_ENTRY.Split(' ')[0].ToLower();
                 var arguments = new List<string>(MAIN_ENTRY.Split(' ').Skip(1).ToArray().ToList());
